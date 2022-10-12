@@ -3,22 +3,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
-
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Scanner;
 
-
 public class Notepad extends JFrame  {
-
     boolean editable=false;
-
-
     JFrame jf;
-
     String filename;
     Container contents;
-
     JMenu menu;
     JMenuBar menubar;
     JMenuItem openMI;
@@ -41,12 +34,11 @@ Notepad()
 
         contents=jf.getContentPane();
 
-
         textArea = new JTextArea();
         textArea.setEnabled(editable);
         JScrollPane scrollPane = new JScrollPane(textArea);
         contents.add(scrollPane, BorderLayout.CENTER);
-//Menu
+        //Menu
         menu= new JMenu("File");
         menubar=new JMenuBar();
 
@@ -60,7 +52,7 @@ Notepad()
         menu.add(closeMI);
         menubar.add(menu);
         contents.add(menubar, BorderLayout.NORTH);
-        //Action listeners:
+            //Action listeners:
             openMI.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -85,15 +77,12 @@ Notepad()
                     close();
                 }
             });
-//tollbar:
+        //tollbar:
         toolbar=new JToolBar("Toolbar");
         contents.add(toolbar, BorderLayout.SOUTH);
         readOnly = new JCheckBox("Read only", true);
         readOnly.setEnabled(true);
-
         openB = new JButton("Open");
-
-
         rollBackB = new JButton("RollBack");
         saveB = new JButton("Save");
         closeB = new JButton("Close");
@@ -103,20 +92,17 @@ Notepad()
         toolbar.add(saveB);
         toolbar.add(closeB);
         //Action listeners
-
         readOnly.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 editable=!editable;
                 textArea.setEnabled(editable);
-
             }
         });
         openB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    open();
+                open();
             }
         });
         rollBackB.addActionListener(new ActionListener() {
@@ -136,9 +122,7 @@ Notepad()
             public void actionPerformed(ActionEvent e) {close();}
         });
 
-
         jf.setVisible(true);
-
     }
 
     void close(){dispose();System.exit(0);}
