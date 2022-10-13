@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -53,31 +51,11 @@ Notepad()
         menubar.add(menu);
         contents.add(menubar, BorderLayout.NORTH);
             //Action listeners:
-            openMI.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    open();
-                }
-            });
-            undoMI.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                        undo();
-                }
-            });
-            saveMI.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                        save();
-                }
-            });
-            closeMI.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    close();
-                }
-            });
-        //tollbar:
+            openMI.addActionListener(e -> open());
+            undoMI.addActionListener(e -> undo());
+            saveMI.addActionListener(e -> save());
+            closeMI.addActionListener(e -> close());
+        //toolbar:
         toolbar=new JToolBar("Toolbar");
         contents.add(toolbar, BorderLayout.SOUTH);
         readOnly = new JCheckBox("Read only", true);
@@ -92,35 +70,14 @@ Notepad()
         toolbar.add(saveB);
         toolbar.add(closeB);
         //Action listeners
-        readOnly.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                editable=!editable;
-                textArea.setEnabled(editable);
-            }
+        readOnly.addActionListener(e -> {
+            editable=!editable;
+            textArea.setEnabled(editable);
         });
-        openB.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                open();
-            }
-        });
-        rollBackB.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                    undo();
-            }
-        });
-        saveB.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                    save();
-            }
-        });
-        closeB.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {close();}
-        });
+        openB.addActionListener(e -> open());
+        rollBackB.addActionListener(e -> undo());
+        saveB.addActionListener(e -> save());
+        closeB.addActionListener(e -> close());
 
         jf.setVisible(true);
     }
